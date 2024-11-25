@@ -93,3 +93,11 @@ Notes:
 	- focuses on optimizing model parameters across distributed datasets while maintaining privacy and individuality of the data.
 
 
+Day 4: 
+
+- Decided to dive into hands-on learning with OpenMined courses. Finished the first lesson(Federated Learning), explored Duet basics and gained insights into federated learning with PySyft and working with multiple data owners.
+- Course link:
+	- https://courses.openmined.org/courses/foundations-of-private-computation
+
+
+
