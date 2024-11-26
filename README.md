@@ -99,5 +99,5 @@ Day 4:
 - Course link:
 	- https://courses.openmined.org/courses/foundations-of-private-computation
 
-
-
+Day 5: 
+- Continued the OpenMined course, started lessons on Split Learning. Learned how to split models across machines for privacy, trained Split Neural Networks using PySyft, and tackled exercises like building Multi-limb SplitNNs on MNIST. 
