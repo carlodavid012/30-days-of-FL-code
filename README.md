@@ -100,4 +100,7 @@ Day 4:
 	- https://courses.openmined.org/courses/foundations-of-private-computation
 
 Day 5: 
-- Continued the OpenMined course, started lessons on Split Learning. Learned how to split models across machines for privacy, trained Split Neural Networks using PySyft, and tackled exercises like building Multi-limb SplitNNs on MNIST. 
+- Continued the OpenMined course, started lessons on Split Learning. Learned how to split models across machines for privacy, trained Split Neural Networks using PySyft, and tackled exercises like building Multi-limb SplitNNs on MNIST.
+
+Day 6: 
+- Continued OpenMined course on lesson about cryptographic ciphers. Learned about encryption and ciphers basics, encoding and decoding with Shift Cipher, its history, and how secret keys ensure secure communication. Also explored the notebook on attacks on ciphers.
