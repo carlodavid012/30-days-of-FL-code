@@ -93,14 +93,30 @@ Notes:
 	- focuses on optimizing model parameters across distributed datasets while maintaining privacy and individuality of the data.
 
 
-Day 4: 
+#### Day 4: 
 
 - Decided to dive into hands-on learning with OpenMined courses. Finished the first lesson(Federated Learning), explored Duet basics and gained insights into federated learning with PySyft and working with multiple data owners.
 - Course link:
 	- https://courses.openmined.org/courses/foundations-of-private-computation
 
-Day 5: 
+#### Day 5: 
 - Continued the OpenMined course, started lessons on Split Learning. Learned how to split models across machines for privacy, trained Split Neural Networks using PySyft, and tackled exercises like building Multi-limb SplitNNs on MNIST.
 
-Day 6: 
+#### Day 6: 
 - Continued OpenMined course on lesson about cryptographic ciphers. Learned about encryption and ciphers basics, encoding and decoding with Shift Cipher, its history, and how secret keys ensure secure communication. Also explored the notebook on attacks on ciphers.
+
+
+#### Day 7: 
+- Continued with cryptographic ciphers lectures. Learned about Monoalphabetic and Vigenère Ciphers, worked through exercises on attacking Monoalphabetic Ciphers to understand encryption vulnerabilities.
+
+
+#### Day 8: 
+- Finished the chapter on cryptographic cipher. Learned about One-Time Padding and its challenges, explored the risks of ciphers with short keys, the importance of using long keys, and why One-Time Padding can fail in practice.
+
+
+#### Day 9: 
+- Started the next lesson(openmined course) on modular algebra which is a mathematical foundation of cryptography. Reviewed concepts on modular algebra and prime numbers, and explored topics such as modular sums, cyclic and multiplicative groups, GCDs, and the Euclidean Algorithm.
+
+
+#### Day 10: 
+- Continued openmined course on modular algebra, Reviewed topics on multiplicative inverses, (groups, rings, fields), and prime numbers. Also explored primality testing, Miller-Rabin test, Mersenne primes, and composite factorization. Next, i'll focus on practical cryptography
