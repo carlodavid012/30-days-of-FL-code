@@ -119,4 +119,12 @@ Notes:
 
 
 #### Day 10: 
-- Continued openmined course on modular algebra, Reviewed topics on multiplicative inverses, (groups, rings, fields), and prime numbers. Also explored primality testing, Miller-Rabin test, Mersenne primes, and composite factorization. Next, i'll focus on practical cryptography
+- Continued openmined course on modular algebra, Reviewed topics on multiplicative inverses, (groups, rings, fields), and prime numbers. Also explored primality testing, Miller-Rabin test, Mersenne primes, and composite factorization. Next, i'll focus on practical cryptography.
+
+#### Day 11:
+- Decided to focus more on hands on tutorials/books. Came across with the book Privacy preserving machine learning(https://www.manning.com/books/privacy-preserving-machine-learning).
+
+- Finished reading the chapter 1 which tackles Privacy  complications in the AI era, and the threat of learning beyond the intended purpose.
+- Explored threats and attacks for ML systems(e.g. De-anonymization, Reconstruction attacks, Parameter inference
+attacks, Model inversion attacks, Membership inference attacks).
+- Also reviewed on differential privacy (DP) which attempts to protect an individual’s sensitive information from any inference attacks targeting the statistics or aggregated data of the individual.
