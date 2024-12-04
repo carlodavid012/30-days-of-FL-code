@@ -128,3 +128,44 @@ Notes:
 - Explored threats and attacks for ML systems(e.g. De-anonymization, Reconstruction attacks, Parameter inference
 attacks, Model inversion attacks, Membership inference attacks).
 - Also reviewed on differential privacy (DP) which attempts to protect an individual’s sensitive information from any inference attacks targeting the statistics or aggregated data of the individual.
+
+#### Day 12:
+
+- Continued reading the book Privacy preserving machine learning(https://manning.com/books/privacy-preserving-machine-learning……). 
+
+Finished reading chapter on differential privacy and learned how DP works. It protects individual data by adding random noise to results before sharing them. This noise ensures that small changes in the data, like adding or removing one person’s information, don’t noticeably affect the results. 
+
+I also learned about sensitivity and privacy budget, to be able to know how much noise should be added for each DP application. Sensitivity measures the impact one individual’s data could have on the result, helping decide how much noise to add for protection, while privacy budget sets how much deviation is allowed, balancing privacy and data usefulness. 
+
+Then i learned some of the most popular mechanisms in DP namely:  
+
+1. Binary Mechanism (Randomized Response): 
+Adds uncertainty by introducing randomness to individual answers, like flipping a coin to decide whether to submit the true or a random response. It protects privacy while preserving overall data accuracy, making it ideal for surveys.  
+2. Laplace Mechanism: Adds noise drawn from a Laplace distribution to numerical query results (e.g., counts or averages). The amount of noise depends on the query's sensitivity (max impact of one individual’s data) and the privacy budget, balancing utility and privacy.  
+3. Exponential Mechanism: Designed for scenarios with categorical or discrete outputs, where adding direct noise would make results meaningless (e.g., choosing an optimal auction bid). It selects the best response using a utility function and applies probability proportional to the function's score.
+
+#### Day 13:
+
+Learned about approaches in applying differential privacy in machine learning. Here are my notes:
+
+- Input perturbation: add noise to the clean
+private data
+- Algorithm perturbation: add noise to the intermediate
+values in each iteration while training the ML models
+- Objective perturbation: add noise to the objective
+loss function of the ML models
+- Output perturbation: add noise to the output of the ML algorithm
+
+Here are examples of differentially private ML algorithms:
+
+Linear Regression:
+- we aim to find the best-fit line or plane that minimizes the difference (residuals) between the observed data and the predicted values. For differentially private linear regression, an input perturbation strategy can be used, where noise is added to the dataset itself to obscure the contribution of individual data points
+
+K-means
+- an algorithm perturbation strategy is used by adding Laplace noise to the intermediate centroids and cluster sizes during the iterative updates of the Lloyd algorithm. This approach (known as DPLloyd) ensures privacy while maintaining the utility of the clustering process
+
+Logistic Regression: 
+- uses a perturbation strategy by adding noise to the objective function, such as applying the vector mechanism to perturb the loss function of the logistic regression model
+
+Naive Bayes Classification
+- we apply output perturbation strategy, where the sensitivity of the naive Bayes model parameters is derived and the Laplace mechanism (Laplacian noise) is then directly applied to the model parameters
