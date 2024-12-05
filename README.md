@@ -169,3 +169,40 @@ Logistic Regression:
 
 Naive Bayes Classification
 - we apply output perturbation strategy, where the sensitivity of the naive Bayes model parameters is derived and the Laplace mechanism (Laplacian noise) is then directly applied to the model parameters
+
+
+
+#### Day 14:
+
+Learned about local differential privacy (LDP) and its applications. Here are my notes:
+
+Local Differential Privacy (LDP)
+- Ensures privacy without relying on a trusted data curator by having individuals perturb their data locally before sharing it with a data aggregator. 
+
+Difference Between Local DP and Normal DP:
+
+Normal DP:
+- Relies on a trusted data curator to collect raw data and apply differential privacy mechanisms (e.g., noise addition) before publishing aggregated statistics or models.
+Local DP:
+- Does not require a trusted curator. Individuals perturb their data themselves before sharing, ensuring privacy even if the aggregator is untrusted.
+
+Real-World Use Cases:
+- Google’s RAPPOR: Gathers browser statistics while preserving user anonymity. 
+- Apple’s Count Mean Sketch: Obscures trends like emoji usage and web activity to protect user privacy.
+
+Key LDP Mechanisms:
+- Randomized response and other noise-adding techniques are used to obfuscate individual data while maintaining useful aggregate insights
+- Controlled by the privacy budget (epsilon), balancing privacy and data utility
+
+Encoding mechanism:
+- Direct Encoding:  
+Maps categorical values to a predefined domain and applies noise for LDP, suitable for multiple-choice problems.
+
+- Histogram Encoding: 
+Encodes numerical/continuous values as vectors and adds noise.
+          - SHE(Summation with Histogram Encoding): calculates the sum of all values
+reported by individuals.
+          - THE (Thresholding with Histogram Encoding): applies a threshold to reduce noise variance, improving estimation accuracy
+
+- Unary Encoding: 
+is a more general and efficient LDP mechanism for categorical and discrete problems
