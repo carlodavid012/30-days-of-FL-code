@@ -206,3 +206,155 @@ reported by individuals.
 
 - Unary Encoding: 
 is a more general and efficient LDP mechanism for categorical and discrete problems
+
+
+#### Day 15: 
+
+Had a great time with Openmined First "Show & Tell" Session, where we got the opportunity to learn from other members FL projects. 
+
+First session is an introductory FL computation on SyftBox by Ionesio Junior, then an exciting e-voting project by Lucas Lopes.
+
+
+#### Day 16: 
+
+Came across with a great course on differential privacy: CS 860 - Algorithms for Private Data Analysis(http://gautamkamath.com/CS860-fa2020.html) by Gautam Kamath. 
+
+Finished the first lecture 1A, which discuss some attempts or failures at Data Privacy. It turns out privacy is really hard and a lot of people try doing ad hoc things. here are the summary for each attempt:
+
+Example 1: NYC Taxicab Data
+In 2014, a dataset of NYC taxi trips from 2013 was released through a FOIL request, containing 19 GB of trip information, including anonymized driver identifiers. However, the MD5-hashed identifiers were reversible, leading to massive privacy violations, such as revealing drivers' incomes and home addresses.
+
+Example 2: Netflix Prize
+Netflix's 2006-2009 competition shared anonymized user movie rating data to improve their recommendation system. Researchers later re-identified users by cross-referencing it with IMDb reviews, exposing private viewing habits and leading to a class-action lawsuit and cancellation of future competitions.
+
+
+
+#### Day 17: #30DaysOfFLCode 
+
+Continued with the course CS 860 - Algorithms for Private Data Analysis. Finished Lecture 1B, which is a continuation on some Attempts at Data Privacy. Traditional anonymization methods are insufficient to ensure data privacy. Further research and advanced methods like differential privacy are critical.
+
+Here are the summary notes on some attempts at privacy:
+
+Example 3: Memorization in Neural Networks
+- Neural networks can memorize sensitive training data like social security numbers.
+- Exposure is measured using log perplexity, where lower perplexity signals higher memorization likelihood.
+- Canary phrases are used to test memorization.
+Differential privacy is one of the few effective mitigation techniques.
+
+Example 4: Membership Inference Genomic Studies
+- Aggregate statistics in genomic studies can reveal individual participation.
+- Example: Homer et al. demonstrated reidentification from DNA mixtures.
+- Led to restricted access to genomic datasets and a focus on privacy-preserving methods.
+
+Example 5: Massachusetts Group Insurance Commission
+- Anonymized hospital visit records were cross-referenced with voter rolls by Latanya Sweeney.
+Reidentified individuals, exposing vulnerabilities in simplistic anonymization techniques.
+- k-Anonymity: Ensures individuals are indistinguishable from at least k−1 others based on quasi-identifiers.
+- Vulnerable to attacks using external information or overlapping datasets.
+
+
+#### Day 18: #30DaysOfFLCode 
+
+Continued with course CS 860 - Algorithms for Private Data Analysis. Finished Lecture 2, which discussed what it means for an algorithm to be non private. Also explored vulnerabilities in releasing aggregate statistics and how attackers can reconstruct microdata or compromise privacy. 
+
+Here are the summary notes from today’s study:
+
+Cencus reconstruction
+- Aggregate statistics are often released instead of raw data to protect privacy, but these statistics can still reveal sensitive information.
+- An example discussed census data with aggregate statistics like age, sex, and race. By analyzing redundancies in these statistics, constraints can be formed on the possible microdata.
+- With sufficient constraints, attackers can reconstruct the original microdata, violating privacy.
+- A real-world example: In a test of the 2010 US Census data, researchers were able to reconstruct microdata for 46% of the population, enabling large-scale reidentification.
+- Such large scale reconstruction attacks were considered to be a red flag, leading to the adoption of differential privacy for disclosure avoidance in the 2020 US census.
+
+Blatant Non-Privacy
+- An algorithm is blatantly non-private if an adversary can reconstruct the database matching 99% of entries.
+
+Dinur-Nissim Attack
+- demonstrates that even when noise is added to query responses, privacy can still be compromised if the noise is insufficient or if too many queries are allowed.
+- The attacker asks many subset queries about the data (e.g., "How many rows satisfy certain conditions?").
+The system adds noise to the true answer to "protect" privacy.
+- By analyzing the noisy responses, the attacker identifies patterns and eliminates inconsistent possibilities.
+
+Real-World Example:
+- In the 2017 Aircloak Challenge, a system called Diffix allowed analysts to run a large number of queries on anonymized data. Researchers used techniques inspired by Dinur-Nissim to reconstruct sensitive data and won a $5,000 bounty for identifying these vulnerabilities.
+
+Takeaway: Even advanced systems can be vulnerable to reconstruction attacks if not adhering to strict privacy protocols like differential privacy.
+
+
+#### Day 19: #30DaysOfFLCode
+
+Continued with the course CS 860 - Algorithms for Private Data Analysis. 
+Finished Lecture 3, which introduces Differential Privacy. Explored the concept of randomized response which is the oldest differentially private algorithm introduce by Warner(1965), which significantly predates the notion of differential privacy. 
+
+Here are summary notes:
+
+Randomized Response
+- a technique to protect individual privacy while allowing estimation of aggregate statistics.
+- Mechanism:
+     - Respond truthfully with probability (0.5 + gamma)
+     - Respond with the inverted answer (1 - true value) with probability (0.5 - gamma).
+- Key observations:
+     - Gamma = 0.5: Perfect accuracy, no privacy.
+     - Gamma = 0: Perfect privacy, no accuracy.
+     - Values between 0 and 0.5 balance plausible deniability and accuracy.
+- Accuracy analysis: The estimator for population proportion has an error bound proportional to 1 divided by (gamma times the square root of the number of participants).
+
+Differential Privacy (DP)
+- Ensures that the output of an algorithm does not change significantly with the presence or absence of an individual’s data.
+- Formal definition: An algorithm is epsilon-DP if the probability of any event in its output is at most e^epsilon times the probability of the same event when one individual’s data is changed.
+- Smaller epsilon means stronger privacy.
+- Differential privacy prevents attacks like:
+     - Linkage attacks: Re-identifying individuals by combining datasets.
+     - Reconstruction attacks: Inferring sensitive details from aggregates.
+
+#### Day 20: #30DaysOfFLCode 
+
+Continued with the course CS 860 - Algorithms for Private Data Analysis. Finished Lecture 4A, which is a review on Laplace mechanism, which is one of the most important algorithm for differential privacy. It builds directly on concepts like sensitivity and improves accuracy compared to randomized response for numeric queries. here are the summary and takeaway notes:
+
+Sensitivity
+- Measures how much a function’s output changes when a single individual's data is modified.
+- Important for determining how much noise to add for privacy guarantees.
+- lecture focused on 1-sensitivity (sum of absolute differences).
+
+Laplace Distribution
+- Used for adding noise in this mechanism.
+- Compared to Gaussian, it has heavier tails, meaning broader noise.
+
+Laplace Mechanism
+- Adds noise proportional to sensitivity to ensure privacy.
+- Example: Computing the average of a dataset.Noise added depends on dataset size and privacy level (ε).
+More data → less noise needed for the same privacy guarantee.
+- Provides better accuracy than randomized response for numeric queries.
+
+Applications
+- Counting Queries: adds small noise to count individual attributes; error depends on ε but not dataset size.
+- Multiple Queries: noise scales with the number of queries; works in non-adaptive settings.
+- Histograms: reduced sensitivity due to structured bins; error grows logarithmically with bin count
+
+Takeaways
+- Laplace Mechanism is more accurate than randomized response for large datasets.
+- Sensitivity analysis is key to adding just enough noise for privacy.
+- Structured queries (like histograms) can use reduced sensitivity for better results.
+
+#### Day 21: #30DaysOfFLCode 
+
+Continued with the course CS 860 - Algorithms for Private Data Analysis. Finished Lecture 4B: Properties of Differential Privacy. Learned about some of the most fundamental properties of DP, namely:
+
+1. Post-Processing
+- Once data is privatized, no further analysis can "undo" the privacy guarantee, even if subsequent transformations or computations occur.
+- Any computation or transformation on differentially private outputs remains private.
+- This property is essential for creating pipelines where private outputs are analyzed without compromising the original privacy guarantee.
+
+2. Group Privacy
+- Differential privacy gracefully extends to groups of individuals. When datasets differ by more than one entry, the privacy loss scales linearly with the number of differing entries.
+- If datasets differ in multiple entries, the privacy loss increases depending on how many entries differ between datasets.
+- This property helps ensure that privacy guarantees hold even when the dataset changes in more complex ways, like when multiple people are added or removed.
+
+3. Basic Composition
+- Running multiple differentially private algorithms on the same dataset results in cumulative privacy loss.
+- Privacy Loss: When multiple independent mechanisms each guarantee privacy with a given level of protection (denoted as epsilon), the combined mechanism guarantees privacy with the sum of these levels of protection.
+- Limitation: The privacy guarantee weakens as the number of queries or mechanisms increases.
+
+#### Day 22: #30DaysOfFLCode
+
+- Attended the second session of OpenMined Show & Tell, where we had the opportunity to learn about different projects from other members and applications of Federated Learning (FL). Learned about interesting and fun projects, including private Data search using Netflix data, learning analytics from a browser history aggregator, and Federated Game of Life.
